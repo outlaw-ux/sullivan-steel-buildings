@@ -1,26 +1,288 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  Sullivan Steel Buildings & Carports
+  Direction: "Farm Catalog Order Form" — mail-order co-op price list.
+  Manila kraft ground, ledger blue-black ink, offset press-red for order actions,
+  stamp green for confirmations. Condensed catalog display + readable serif body.
+*/
+
+@theme {
+  --color-manila: #e6dcc1;
+  --color-manila-deep: #dbcda3;
+  --color-paper: #f5efdd;
+  --color-ink: #1e2732;
+  --color-ink-soft: #4b5763;
+  --color-press: #ac3626;
+  --color-press-dark: #8a2a1d;
+  --color-stamp: #3a5942;
+  --color-rule: #b7a67c;
+
+  --font-display: var(--font-saira), "Arial Narrow", "Helvetica Neue", sans-serif;
+  --font-body: var(--font-source-serif), Georgia, "Times New Roman", serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--color-manila);
+    background-image: radial-gradient(
+      rgba(30, 39, 50, 0.03) 0.5px,
+      transparent 0.6px
+    );
+    background-size: 4px 4px;
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Room for the mobile sticky quote bar */
+  @media (max-width: 63.999rem) {
+    body {
+      padding-bottom: 4.75rem;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.04;
+    text-wrap: balance;
+    letter-spacing: 0.005em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  ::selection {
+    background: var(--color-press);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-press);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 48rem) {
+    .wrap {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Catalog masthead / section break: a heavy rule over a hairline */
+  .rule-double {
+    height: 6px;
+    background:
+      linear-gradient(var(--color-ink), var(--color-ink)) top / 100% 2px no-repeat,
+      linear-gradient(var(--color-ink), var(--color-ink)) bottom / 100% 1px
+        no-repeat;
+  }
+
+  /* Framed catalog photo with a hard offset shadow, like a print block */
+  .frame {
+    background: var(--color-paper);
+    border: 1px solid var(--color-ink);
+    padding: 6px;
+    box-shadow: 7px 7px 0 var(--color-rule);
+  }
+  .frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Punched price tag */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-ink);
+    padding: 0.2rem 0.7rem 0.2rem 1.15rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    position: relative;
+    transform: rotate(-1.4deg);
+  }
+  .tag::before {
+    content: "";
+    position: absolute;
+    left: 0.45rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.34rem;
+    height: 0.34rem;
+    border-radius: 50%;
+    background: var(--color-manila);
+    border: 1px solid var(--color-ink);
+  }
+
+  /* Fill-in-the-blank form line */
+  .field-line {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1.5px solid var(--color-ink);
+    border-radius: 0;
+    padding: 0.5rem 0.15rem;
+    font: inherit;
+    color: var(--color-ink);
+  }
+  .field-line::placeholder {
+    color: color-mix(in srgb, var(--color-ink) 45%, transparent);
+  }
+  .field-line:focus {
+    outline: 0;
+    border-bottom-color: var(--color-press);
+    box-shadow: 0 1.5px 0 var(--color-press);
+  }
+  select.field-line {
+    appearance: none;
+    background-image: linear-gradient(
+        45deg,
+        transparent 50%,
+        var(--color-ink) 50%
+      ),
+      linear-gradient(135deg, var(--color-ink) 50%, transparent 50%);
+    background-position:
+      calc(100% - 14px) calc(0.9rem + 1px),
+      calc(100% - 9px) calc(0.9rem + 1px);
+    background-size:
+      5px 5px,
+      5px 5px;
+    background-repeat: no-repeat;
+    padding-right: 2rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--color-press);
+    color: var(--color-paper);
+    border: 1.5px solid var(--color-ink);
+    border-radius: 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    font-size: 1.05rem;
+    line-height: 1;
+    padding: 0.85rem 1.4rem;
+    box-shadow: 5px 5px 0 var(--color-ink);
+    transition:
+      transform 120ms ease,
+      box-shadow 120ms ease,
+      background-color 120ms ease;
+    cursor: pointer;
+    text-align: center;
+  }
+  .btn:hover {
+    background: var(--color-press-dark);
+    transform: translate(1px, 1px);
+    box-shadow: 4px 4px 0 var(--color-ink);
+  }
+  .btn:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 var(--color-ink);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-ink);
+    box-shadow: 3px 3px 0 var(--color-rule);
+  }
+  .btn-ghost:hover {
+    background: var(--color-manila-deep);
+    color: var(--color-ink);
+  }
+  .btn-sm {
+    padding: 0.6rem 0.95rem;
+    font-size: 0.98rem;
+    box-shadow: 3px 3px 0 var(--color-ink);
+  }
+  .btn-sm:hover {
+    box-shadow: 2px 2px 0 var(--color-ink);
+  }
+
+  /* Body copy inside catalog entries: keep the measure short */
+  .measure {
+    max-width: 40rem;
+  }
+
+  .link-action {
+    color: var(--color-press);
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .link-action:hover {
+    text-decoration-thickness: 2px;
+  }
+}
+
+/* The one orchestrated motion: the order card settles in once. */
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(10px) rotate(-1.1deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.animate-settle {
+  animation: settle 420ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.animate-slide-up {
+  animation: slide-up 280ms ease-out both;
 }
