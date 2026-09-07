@@ -20,6 +20,37 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Code Quality
+
+```bash
+npm run typecheck    # tsc --noEmit
+npm run lint         # eslint .
+npm run lint:fix     # eslint . --fix
+npm run format       # prettier --write .
+npm run format:check # prettier --check .
+npm run check        # all three, in order
+```
+
+`next build` does **not** run linting — Next.js 16 removed `next lint`. Run
+`npm run check` locally or in CI.
+
+Prettier owns formatting; `eslint-config-prettier` is applied last in
+`eslint.config.mjs` so the two never disagree. `prettier-plugin-tailwindcss`
+sorts Tailwind class lists into the framework's canonical order.
+
+### Pinned tool versions
+
+Two dev dependencies are deliberately held back, both because
+`eslint-config-next` pins transitive packages that have not caught up:
+
+| Package      | Pinned | Latest  | Reason                                                                                                                                                                                        |
+| ------------ | ------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `typescript` | 6.0.3  | 7.0.2   | `typescript-eslint` supports `<6.1.0` and hard-errors on TS 7, which exposes only `./unstable/*` APIs ([tracking issue](https://github.com/typescript-eslint/typescript-eslint/issues/10940)) |
+| `eslint`     | 9.39.5 | 10.10.0 | `eslint-plugin-react` supports `eslint ^9.7`; on ESLint 10 its React version detection throws                                                                                                 |
+
+`@types/node` is also held at `^22` to match the Node runtime. Raise these
+together with the upstream packages, not on their own.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
