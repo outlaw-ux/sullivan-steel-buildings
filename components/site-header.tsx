@@ -4,7 +4,7 @@ import { Rule } from "@/components/ui";
 
 export function SiteHeader() {
   return (
-    <header>
+    <header className="relative z-50">
       <div className="bg-ink text-paper">
         <div className="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-1.5 font-display text-sm tracking-wide">
           <span>Serving Sullivan, Franklin &amp; Washington County, Missouri</span>
@@ -14,15 +14,15 @@ export function SiteHeader() {
         </div>
       </div>
 
-      <div className="wrap flex flex-wrap items-center justify-between gap-4 py-4">
-        <Link href="/" className="block leading-none">
-          <span className="block font-display text-[1.55rem] font-bold uppercase leading-[0.95] tracking-[0.02em] sm:text-[1.8rem]">
+      <div className="wrap flex items-center justify-between gap-4 py-4">
+        <Link href="/" className="block min-w-0 leading-none">
+          <span className="block font-display text-[1.2rem] font-bold uppercase leading-[0.95] tracking-[0.01em] sm:text-[1.8rem] sm:tracking-[0.02em]">
             Sullivan Steel Buildings
           </span>
-          <span className="block font-display text-[1.55rem] font-bold uppercase leading-[0.95] tracking-[0.02em] sm:text-[1.8rem]">
+          <span className="block font-display text-[1.2rem] font-bold uppercase leading-[0.95] tracking-[0.01em] sm:text-[1.8rem] sm:tracking-[0.02em]">
             &amp; Carports
           </span>
-          <span className="mt-1.5 block text-xs font-semibold uppercase tracking-[0.14em] text-press">
+          <span className="mt-1.5 block text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-press sm:text-xs sm:tracking-[0.14em]">
             Authorized American Steel dealer
           </span>
         </Link>
@@ -42,11 +42,11 @@ export function SiteHeader() {
           </a>
         </nav>
 
-        <details className="relative lg:hidden">
+        <details className="shrink-0 lg:hidden">
           <summary className="btn btn-sm list-none [&::-webkit-details-marker]:hidden">
             Menu
           </summary>
-          <div className="absolute right-0 z-50 mt-2 w-60 border border-ink bg-paper p-4 shadow-[6px_6px_0_#b7a67c]">
+          <div className="absolute inset-x-0 top-full z-50 mx-4 mt-2 max-h-[70vh] overflow-y-auto border border-ink bg-paper p-4 shadow-[6px_6px_0_#b7a67c] sm:left-auto sm:right-4 sm:mx-0 sm:w-64">
             <ul className="grid gap-3">
               {nav.map((item) => (
                 <li key={item.href}>
