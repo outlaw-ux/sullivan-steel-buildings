@@ -5,7 +5,7 @@ export const site = {
   dealerOf: "American Steel Carports, Inc.",
   phone: "(573) 468-9026",
   phoneHref: "tel:+15734689026",
-  email: "quote@contact.sullivansteelbuildings.com",
+  email: "quotes@sullivansteelbuildings.com",
   address: {
     street: "11891 Mine Rd",
     city: "Sullivan",

@@ -1,9 +1,11 @@
+import { Resend } from "resend";
+
 /*
  * Quote request endpoint.
  *
- * For now this validates the payload and logs it server-side so nothing is lost
- * while the business wires up email/CRM delivery. To send email, drop a call to
- * your provider (Resend, SES, a Zapier catch hook, etc.) where noted below.
+ * Sends the request as an email through Resend when RESEND_API_KEY and
+ * QUOTE_TO_EMAIL are set. Without them (e.g. local dev), it logs the request to
+ * the server console and still returns success, so the form keeps working.
  */
 
 type QuotePayload = Record<string, string>;
@@ -18,6 +20,21 @@ const FIELDS = [
   "notes",
   "source",
 ] as const;
+
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const QUOTE_TO_EMAIL = process.env.QUOTE_TO_EMAIL;
+const QUOTE_CC_EMAIL = process.env.QUOTE_CC_EMAIL;
+const QUOTE_FROM_EMAIL =
+  process.env.QUOTE_FROM_EMAIL ??
+  "Sullivan Steel Buildings <quotes@sullivansteelbuildings.com>";
+
+const list = (value?: string) =>
+  value
+    ? value
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean)
+    : undefined;
 
 export async function POST(request: Request) {
   let raw: unknown;
@@ -50,9 +67,73 @@ export async function POST(request: Request) {
   }
 
   const record = { ...data, receivedAt: new Date().toISOString() };
-  console.log("[quote] new request:", JSON.stringify(record));
 
-  // TODO: forward `record` to email/CRM here.
+  const body = [
+    `Name:     ${data.name}`,
+    `Phone:    ${data.phone}`,
+    data.email ? `Email:    ${data.email}` : null,
+    data.zip ? `ZIP:      ${data.zip}` : null,
+    data.buildingType ? `Building: ${data.buildingType}` : null,
+    data.size ? `Size:     ${data.size}` : null,
+    data.notes ? `\nNotes:\n${data.notes}` : null,
+    ``,
+    `Source:   ${data.source ?? "site"}`,
+    `Received: ${record.receivedAt}`,
+  ]
+    .filter(Boolean)
+    .join("\n");
+
+  if (!RESEND_API_KEY || !QUOTE_TO_EMAIL) {
+    console.log(
+      "[quote] email not configured — request logged only:",
+      JSON.stringify(record),
+    );
+    return Response.json({ ok: true });
+  }
+
+  try {
+    const resend = new Resend(RESEND_API_KEY);
+    const { error } = await resend.emails.send({
+      from: QUOTE_FROM_EMAIL,
+      to: list(QUOTE_TO_EMAIL)!,
+      cc: list(QUOTE_CC_EMAIL),
+      replyTo: data.email || undefined,
+      subject: `Quote request — ${data.name}${
+        data.buildingType ? `, ${data.buildingType}` : ""
+      }`,
+      text: body,
+    });
+
+    if (error) {
+      console.error(
+        "[quote] Resend error:",
+        error,
+        "request:",
+        JSON.stringify(record),
+      );
+      return Response.json(
+        {
+          ok: false,
+          error: "We couldn't send your request just now. Please call us.",
+        },
+        { status: 502 },
+      );
+    }
+  } catch (err) {
+    console.error(
+      "[quote] Resend threw:",
+      err,
+      "request:",
+      JSON.stringify(record),
+    );
+    return Response.json(
+      {
+        ok: false,
+        error: "We couldn't send your request just now. Please call us.",
+      },
+      { status: 502 },
+    );
+  }
 
   return Response.json({ ok: true });
 }
