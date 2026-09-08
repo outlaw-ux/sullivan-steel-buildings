@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Saira_Condensed, Source_Serif_4 } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { StickyQuoteBar } from "@/components/sticky-quote-bar";
 import { serviceArea, site } from "@/lib/site";
+
+const GA_MEASUREMENT_ID = "G-60KDPRE4NC";
 
 const saira = Saira_Condensed({
   subsets: ["latin"],
@@ -83,6 +86,16 @@ export default function RootLayout({
         <main>{children}</main>
         <SiteFooter />
         <StickyQuoteBar />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_MEASUREMENT_ID}');`}
+        </Script>
       </body>
     </html>
   );
