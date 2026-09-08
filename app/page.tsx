@@ -131,7 +131,7 @@ export default function HomePage() {
           steps={[
             {
               title: "Pick a size and style",
-              body: "Tell us what's going under it and where it sits. Not sure on size? We'll walk you through it at the counter.",
+              body: "Tell us what's going under it and where it sits. Not sure on size? We'll walk you through it.",
             },
             {
               title: "We price it",
@@ -195,24 +195,26 @@ export default function HomePage() {
       <Section>
         <div className="grid gap-8 md:grid-cols-2 md:items-center">
           <div>
-            <SectionHeading title="Stop in at the store" as="h2" />
+            <SectionHeading title="Talk to a builder" as="h2" />
             <p className="measure">
-              You&apos;ll find us at the counter inside the {site.storeName} on
-              Mine Road. Bring a photo of the spot and a rough size, and
-              we&apos;ll sketch options and print a quote while you wait.
+              Send a photo of the spot and a rough size and we&apos;ll sketch
+              options and get a written quote back to you. Prefer to talk it
+              through? Give us a call.
             </p>
             <ul className="mt-5 border-t border-rule font-display uppercase tracking-wide">
-              <li className="border-b border-rule py-2.5">
-                <a className="link-action" href={site.mapHref}>
-                  {site.addressLine}
-                </a>
-              </li>
               <li className="border-b border-rule py-2.5">
                 <a className="link-action" href={site.phoneHref}>
                   {site.phone}
                 </a>
               </li>
-              <li className="border-b border-rule py-2.5">{site.hoursNote}</li>
+              <li className="border-b border-rule py-2.5">
+                <a className="link-action" href={`mailto:${site.email}`}>
+                  {site.email}
+                </a>
+              </li>
+              <li className="border-b border-rule py-2.5">
+                Serving {site.address.city}, MO and the surrounding counties
+              </li>
             </ul>
           </div>
           <Frame

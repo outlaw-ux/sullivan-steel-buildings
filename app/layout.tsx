@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { StickyQuoteBar } from "@/components/sticky-quote-bar";
+import { AnalyticsConsent } from "@/components/analytics-consent";
 import { serviceArea, site } from "@/lib/site";
 
 const saira = Saira_Condensed({
@@ -60,14 +61,13 @@ const jsonLd = {
   url: site.siteUrl,
   address: {
     "@type": "PostalAddress",
-    streetAddress: site.address.street,
     addressLocality: site.address.city,
     addressRegion: site.address.state,
     postalCode: site.address.zip,
     addressCountry: "US",
   },
   areaServed: serviceArea.map((name) => ({ "@type": "Place", name })),
-  sameAs: [site.facebook, site.storeHref],
+  sameAs: [site.facebook],
 };
 
 export default function RootLayout({
@@ -84,6 +84,7 @@ export default function RootLayout({
         <main>{children}</main>
         <SiteFooter />
         <StickyQuoteBar />
+        <AnalyticsConsent />
       </body>
     </html>
   );

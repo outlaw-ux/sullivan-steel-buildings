@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { QuoteForm } from "@/components/quote-form";
+import { CookieChoicesButton } from "@/components/cookie-choices-button";
 import { nav, serviceArea, site } from "@/lib/site";
 
 export function SiteFooter() {
@@ -33,24 +34,9 @@ export function SiteFooter() {
       <div className="wrap grid gap-10 py-12 md:grid-cols-3">
         <div>
           <h3 className="font-display text-lg font-semibold uppercase tracking-wide">
-            Find us
+            Contact
           </h3>
-          <p className="mt-2">
-            Inside the{" "}
-            <a
-              className="link-action"
-              href={site.storeHref}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {site.storeName}
-            </a>
-          </p>
-          <p className="mt-1">
-            <a className="link-action" href={site.mapHref} target="_blank" rel="noopener noreferrer">
-              {site.addressLine}
-            </a>
-          </p>
+          <p className="mt-2">{site.addressLine}</p>
           <p className="mt-1">
             <a className="link-action" href={site.phoneHref}>
               {site.phone}
@@ -71,7 +57,6 @@ export function SiteFooter() {
               Facebook
             </a>
           </p>
-          <p className="mt-2 text-sm text-ink-soft">{site.hoursNote}</p>
         </div>
 
         <div>
@@ -102,8 +87,11 @@ export function SiteFooter() {
 
       <div className="border-t border-rule">
         <div className="wrap flex flex-col gap-2 py-5 text-sm text-ink-soft sm:flex-row sm:items-center sm:justify-between">
-          <span>
-            © {year} {site.legalEntity}. All rights reserved.
+          <span className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+            <span>
+              © {year} {site.legalEntity}. All rights reserved.
+            </span>
+            <CookieChoicesButton />
           </span>
           <span>
             {site.name} is an independent authorized dealer for {site.dealerOf}{" "}

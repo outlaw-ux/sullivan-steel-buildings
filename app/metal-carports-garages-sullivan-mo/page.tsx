@@ -198,7 +198,7 @@ export default function CarportsGaragesPage() {
         <SectionHeading
           title="What size do I need?"
           as="h2"
-          kicker="A starting point. Bring your measurements to the store and we'll check clearances with you."
+          kicker="A starting point. Send your measurements and we'll check clearances with you."
         />
         <SpecTable
           head={["What you're parking", "Recommended size (W × L × H)"]}
@@ -219,10 +219,10 @@ export default function CarportsGaragesPage() {
         <SectionHeading title="Serving Sullivan and nearby" as="h2" />
         <p className="measure">
           We deliver and install throughout {site.address.city}, Bourbon, Cuba,
-          St. Clair, Stanton, Gray Summit, and the {site.storeName}&apos;s home
-          turf around Woodland Lakes, plus the wider stretch of Franklin,
-          Washington, and Crawford County. Woodland Lakes has its own building
-          approval step; we can hand you the drawings you need for it.
+          St. Clair, Stanton, Gray Summit, and around Woodland Lakes, plus the
+          wider stretch of Franklin, Washington, and Crawford County. Woodland
+          Lakes has its own building approval step; we can hand you the drawings
+          you need for it.
         </p>
       </Section>
 
