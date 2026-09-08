@@ -3,8 +3,8 @@ export const site = {
   shortName: "Sullivan Steel Buildings",
   legalEntity: "Strode Properties Inc",
   dealerOf: "American Steel Carports, Inc.",
-  phone: "(573) 468-9026",
-  phoneHref: "tel:+15734689026",
+  phone: "(314) 393-6394",
+  phoneHref: "tel:+13143936394",
   email: "quotes@sullivansteelbuildings.com",
   address: {
     street: "11891 Mine Rd",
