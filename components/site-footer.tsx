@@ -33,24 +33,9 @@ export function SiteFooter() {
       <div className="wrap grid gap-10 py-12 md:grid-cols-3">
         <div>
           <h3 className="font-display text-lg font-semibold uppercase tracking-wide">
-            Find us
+            Contact
           </h3>
-          <p className="mt-2">
-            Inside the{" "}
-            <a
-              className="link-action"
-              href={site.storeHref}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {site.storeName}
-            </a>
-          </p>
-          <p className="mt-1">
-            <a className="link-action" href={site.mapHref} target="_blank" rel="noopener noreferrer">
-              {site.addressLine}
-            </a>
-          </p>
+          <p className="mt-2">{site.addressLine}</p>
           <p className="mt-1">
             <a className="link-action" href={site.phoneHref}>
               {site.phone}
@@ -71,7 +56,6 @@ export function SiteFooter() {
               Facebook
             </a>
           </p>
-          <p className="mt-2 text-sm text-ink-soft">{site.hoursNote}</p>
         </div>
 
         <div>

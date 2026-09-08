@@ -224,8 +224,7 @@ export default function FinancingPage() {
               a: (
                 <p>
                   To the rent-to-own company or the lender directly, not to us.
-                  We help you set it up at the counter and then step out of the
-                  billing.
+                  We help you get it set up and then step out of the billing.
                 </p>
               ),
             },

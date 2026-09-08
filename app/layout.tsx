@@ -60,14 +60,13 @@ const jsonLd = {
   url: site.siteUrl,
   address: {
     "@type": "PostalAddress",
-    streetAddress: site.address.street,
     addressLocality: site.address.city,
     addressRegion: site.address.state,
     postalCode: site.address.zip,
     addressCountry: "US",
   },
   areaServed: serviceArea.map((name) => ({ "@type": "Place", name })),
-  sameAs: [site.facebook, site.storeHref],
+  sameAs: [site.facebook],
 };
 
 export default function RootLayout({
