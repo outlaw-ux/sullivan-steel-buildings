@@ -19,7 +19,7 @@ export const site = {
   storeName: "Lil Bit of Something Country Store",
   storeHref: "https://lbos.store/",
   hoursNote: "Open daily — stop in at the store counter",
-  siteUrl: "https://sullivansteelbuildings.com",
+  siteUrl: "https://www.sullivansteelbuildings.com",
 } as const;
 
 export const serviceArea = [
