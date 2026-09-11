@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   CtaBand,
   FactList,
@@ -152,6 +153,49 @@ export default function FinancingPage() {
 
       <Rule />
 
+      <Section>
+        <SectionHeading
+          title="Paying for the site work"
+          as="h2"
+          kicker="The building and the ground under it are two different invoices. Worth knowing before you budget."
+        />
+        <div className="grid gap-8 md:grid-cols-2 md:items-start">
+          <div>
+            <p className="measure">
+              Rent-to-own and the lender&apos;s installment loan cover the
+              building itself &mdash; that contract is with the manufacturer and
+              its finance partners. Dirt work, retaining walls, concrete, wiring,
+              and interior finishing are our work, quoted and invoiced
+              separately, usually in draws as the job hits its stages.
+            </p>
+            <p className="measure mt-3">
+              We give you both numbers at the same time so there&apos;s no
+              surprise after the shell is standing, and we&apos;ll tell you which
+              parts of the site work can wait a season without hurting anything.
+              See{" "}
+              <Link
+                className="link-action"
+                href="/site-prep-groundwork-sullivan-mo"
+              >
+                site prep &amp; groundwork
+              </Link>{" "}
+              for what&apos;s in that scope.
+            </p>
+          </div>
+          <FactList
+            items={[
+              "Building: rent-to-own or lender financing",
+              "Site work and concrete: quoted and paid separately",
+              "Interior finishing: quoted separately, can be phased",
+              "Both numbers come back with the same quote",
+              "Some site work can be deferred; drainage usually shouldn't be",
+            ]}
+          />
+        </div>
+      </Section>
+
+      <Rule />
+
       <Section band>
         <SectionHeading
           title="What affects your price"
@@ -173,6 +217,7 @@ export default function FinancingPage() {
               "Doors and windows: roll-up, walk, sliders",
               "Insulation and wainscot",
               "Delivery distance and site condition",
+              "Site work: grading, walls, concrete, and drainage",
             ]}
           />
         </div>

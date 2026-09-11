@@ -107,7 +107,12 @@ export default function CarportsGaragesPage() {
           />
           <p className="mt-3 text-sm text-ink-soft">
             Starting prices for delivery and install on level ground in our area.
-            Your number depends on size, gauge, and site.
+            Your number depends on size, gauge, and site. If the ground
+            isn&apos;t level yet,{" "}
+            <Link className="link-action" href="/site-prep-groundwork-sullivan-mo">
+              we do that part too
+            </Link>
+            .
           </p>
         </div>
       </Section>
@@ -186,7 +191,15 @@ export default function CarportsGaragesPage() {
               Every building is anchored to the ground. On dirt we use rebar or
               mobile-home anchors; on a concrete slab, wedge anchors; on asphalt,
               long asphalt anchors. Tell us the surface when you request a quote
-              so the right hardware is on the truck.
+              so the right hardware is on the truck &mdash; and if we&apos;re
+              pouring the{" "}
+              <Link
+                className="link-action"
+                href="/concrete-pads-piers-footings-sullivan-mo"
+              >
+                pad
+              </Link>{" "}
+              for you, the anchor layout goes in before the concrete does.
             </p>
           </div>
         </div>
@@ -216,6 +229,54 @@ export default function CarportsGaragesPage() {
       <Rule />
 
       <Section>
+        <SectionHeading
+          title="Ground under it, finish inside it"
+          as="h2"
+          kicker="The building is half the job on most properties around here. We do the other half."
+        />
+        <div className="grid gap-8 md:grid-cols-2 md:items-start">
+          <div>
+            <p className="measure">
+              If the spot slopes, holds water, or has never been cleared, our
+              crew grades it, builds a retaining wall where the cut needs one,
+              and pours the pad or drills the piers before delivery week. Then,
+              once the garage is standing, we come back to fur and insulate the
+              walls, run the wiring and lights, and hang drywall so the shop is
+              usable in January.
+            </p>
+          </div>
+          <ul className="border-t border-rule">
+            {[
+              {
+                href: "/site-prep-groundwork-sullivan-mo",
+                label: "Site prep & groundwork",
+              },
+              {
+                href: "/concrete-pads-piers-footings-sullivan-mo",
+                label: "Concrete pads, piers & footings",
+              },
+              {
+                href: "/grading-excavation-retaining-walls-sullivan-mo",
+                label: "Grading, excavation & retaining walls",
+              },
+              {
+                href: "/insulation-drywall-electrical-metal-buildings",
+                label: "Insulation, drywall & electrical",
+              },
+            ].map((l) => (
+              <li key={l.href} className="border-b border-rule py-2.5">
+                <Link className="link-action" href={l.href}>
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Section>
+
+      <Rule />
+
+      <Section>
         <SectionHeading title="Serving Sullivan and nearby" as="h2" />
         <p className="measure">
           We deliver and install throughout {site.address.city}, Bourbon, Cuba,
@@ -239,7 +300,14 @@ export default function CarportsGaragesPage() {
                   Not for a carport. Level ground or a gravel pad is fine, and we
                   anchor into it. For a fully enclosed garage a slab is
                   recommended so the base rail seals to a flat surface and you
-                  get a finished floor.
+                  get a finished floor. We pour it &mdash; see{" "}
+                  <Link
+                    className="link-action"
+                    href="/concrete-pads-piers-footings-sullivan-mo"
+                  >
+                    pads, piers &amp; footings
+                  </Link>{" "}
+                  for thickness and timing.
                 </p>
               ),
             },

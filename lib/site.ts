@@ -39,7 +39,36 @@ export const nav = [
     href: "/steel-barns-franklin-washington-county-mo",
   },
   { label: "RV & boat covers", href: "/rv-boat-equipment-covers" },
+  { label: "Site prep", href: "/site-prep-groundwork-sullivan-mo" },
   { label: "Financing", href: "/financing-rent-to-own" },
+];
+
+/*
+ * The site-work side of the business: everything that happens before the
+ * building lands and everything that happens inside it afterward. The hub page
+ * is also in `nav`; the rest hang off it and off the footer.
+ */
+export const siteWorkNav = [
+  {
+    label: "Site prep & groundwork",
+    href: "/site-prep-groundwork-sullivan-mo",
+  },
+  {
+    label: "Concrete pads, piers & footings",
+    href: "/concrete-pads-piers-footings-sullivan-mo",
+  },
+  {
+    label: "Grading, excavation & retaining walls",
+    href: "/grading-excavation-retaining-walls-sullivan-mo",
+  },
+  {
+    label: "Insulation, drywall & electrical",
+    href: "/insulation-drywall-electrical-metal-buildings",
+  },
+  {
+    label: "Cabin & home interior build-outs",
+    href: "/cabin-home-interior-build-outs-sullivan-mo",
+  },
 ];
 
 export const buildingTypes = [
@@ -49,6 +78,9 @@ export const buildingTypes = [
   "Barn or ag building",
   "Storage shed",
   "Workshop",
+  "Camping cabin or living quarters",
   "Custom building",
+  "Site prep or concrete only",
+  "Interior finish or build-out only",
   "Not sure yet",
 ];

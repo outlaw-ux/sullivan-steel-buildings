@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { nav, site } from "@/lib/site";
+import { nav, site, siteWorkNav } from "@/lib/site";
 import { Rule } from "@/components/ui";
 
 export function SiteHeader() {
@@ -27,7 +27,7 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-5 xl:flex">
           {nav.map((item) => (
             <Link
               key={item.href}
@@ -42,7 +42,7 @@ export function SiteHeader() {
           </a>
         </nav>
 
-        <details className="shrink-0 lg:hidden">
+        <details className="shrink-0 xl:hidden">
           <summary className="btn btn-sm list-none [&::-webkit-details-marker]:hidden">
             Menu
           </summary>
@@ -58,6 +58,23 @@ export function SiteHeader() {
                   </Link>
                 </li>
               ))}
+            </ul>
+            <p className="mt-4 border-t border-rule pt-3 font-display text-xs font-semibold uppercase tracking-[0.12em] text-ink-soft">
+              Site work &amp; finishing
+            </p>
+            <ul className="mt-2 grid gap-3">
+              {siteWorkNav
+                .filter((item) => !nav.some((n) => n.href === item.href))
+                .map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="font-display font-semibold uppercase tracking-wide hover:text-press"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
             </ul>
             <a href="#quote" className="btn btn-sm mt-4 w-full">
               Request a quote

@@ -5,6 +5,16 @@ export function Rule() {
   return <div className="rule-double" role="presentation" />;
 }
 
+/* Page-level structured data. See lib/seo.ts for the record builders. */
+export function JsonLd({ data }: { data: object }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
 export function Section({
   children,
   band = false,

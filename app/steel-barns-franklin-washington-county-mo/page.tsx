@@ -146,7 +146,7 @@ export default function BarnsPage() {
               "Nothing for termites or carpenter bees to eat",
               "Non-combustible frame and skin",
               "Bolts to piers or a slab, and takes a wind package",
-              "Goes up in days once the site is ready",
+              "Goes up in days once we have the site ready",
               "20-year rust warranty on 12-gauge steel",
             ]}
           />
@@ -190,11 +190,32 @@ export default function BarnsPage() {
       <Section>
         <SectionHeading title="Site prep" as="h2" />
         <p className="measure">
-          You get the pad ready; we bring the barn. Ground should be level within
-          a few inches across the footprint. A compacted gravel pad makes a solid
-          dirt floor and keeps water moving. Concrete piers or a slab are
-          optional and are the way to go for a horse barn or a finished shop.
-          Not sure your spot will work? Send photos with your quote request and
+          We can get the pad ready or you can &mdash; either way works. Ground
+          needs to be level within a few inches across the footprint, and a
+          compacted gravel pad makes a solid dirt floor while keeping water
+          moving. If your spot slopes, holds water, or has never been cleared,
+          that&apos;s our crew&apos;s work: clearing, cut and fill, retaining
+          walls, and drainage before the barn ever shows up.
+        </p>
+        <p className="measure mt-3">
+          Concrete piers or a slab are optional on a hay or equipment barn and
+          are the way to go for a horse barn or a finished shop. We drill and
+          pour the piers below the frost line and set the anchors to the
+          drawings. See{" "}
+          <Link
+            className="link-action"
+            href="/concrete-pads-piers-footings-sullivan-mo"
+          >
+            pads, piers &amp; footings
+          </Link>{" "}
+          and{" "}
+          <Link
+            className="link-action"
+            href="/grading-excavation-retaining-walls-sullivan-mo"
+          >
+            grading &amp; retaining walls
+          </Link>
+          . Not sure your spot will work? Send photos with your quote request and
           we&apos;ll tell you.
         </p>
       </Section>
@@ -210,8 +231,9 @@ export default function BarnsPage() {
               a: (
                 <p>
                   Yes. Most equipment and hay barns run on a gravel or dirt
-                  floor. We anchor the base rail to the ground. Add concrete
-                  later if you want it.
+                  floor, and we build the compacted gravel pad under it. We
+                  anchor the base rail to the ground, and we can come back and
+                  pour concrete inside the frame later if you want it.
                 </p>
               ),
             },

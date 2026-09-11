@@ -190,6 +190,16 @@ export default function RvCoversPage() {
           package for anything 14 ft or taller. If your site is open and
           wind-exposed, tell us &mdash; we&apos;ll add bracing.
         </p>
+        <p className="measure mt-3">
+          Anchors only hold as well as what they&apos;re in, which is why the pad
+          matters on a tall cover. If the spot is soft, sloped, or holds water,
+          our crew grades it and builds a compacted gravel pad or pours a slab
+          before the cover goes up. See{" "}
+          <Link className="link-action" href="/site-prep-groundwork-sullivan-mo">
+            site prep &amp; groundwork
+          </Link>
+          .
+        </p>
       </Section>
 
       <Rule />
@@ -211,9 +221,16 @@ export default function RvCoversPage() {
               q: "Do I need concrete?",
               a: (
                 <p>
-                  No. Level ground or a gravel pad works for an open or
-                  part-enclosed cover. A slab is worth it for a fully enclosed RV
-                  garage.
+                  No. Level ground or a compacted gravel pad works for an open or
+                  part-enclosed cover, and we can build that pad for you. A slab
+                  is worth it for a fully enclosed RV garage &mdash; see{" "}
+                  <Link
+                    className="link-action"
+                    href="/concrete-pads-piers-footings-sullivan-mo"
+                  >
+                    pads, piers &amp; footings
+                  </Link>
+                  .
                 </p>
               ),
             },

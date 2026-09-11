@@ -10,6 +10,7 @@ import {
   Steps,
 } from "@/components/ui";
 import { catalog, warranties } from "@/lib/products";
+import { siteWork } from "@/lib/services";
 import { site } from "@/lib/site";
 
 export default function HomePage() {
@@ -24,15 +25,17 @@ export default function HomePage() {
             Steel buildings &amp; carports, priced for your place
           </h1>
           <p className="measure mt-4 text-lg">
-            We&apos;re the local dealer for American Steel Carports. Pick a size
-            and a spot on the property. We handle the drawings, delivery, and the
-            install &mdash; usually within a month of your order.
+            We&apos;re the local dealer for American Steel Carports, and we do
+            the ground work too. Pick a size and a spot on the property. We grade
+            it, pour the pad, handle the drawings and delivery, set the building,
+            and finish the inside if you want it finished.
           </p>
           <ul className="mt-6 border-t border-rule font-display uppercase tracking-wide">
             {[
               "12-gauge galvanized steel framing",
+              "Dirt work, retaining walls, piers, and pads by our own crew",
+              "Insulation, wiring, drywall, and interior build-outs",
               "Rent-to-own and bank financing, no perfect credit needed",
-              "Backed by American Steel's 20-year frame warranty",
               "Installed across Franklin, Washington & Crawford County",
             ].map((line) => (
               <li key={line} className="border-b border-rule py-2.5">
@@ -131,21 +134,54 @@ export default function HomePage() {
           steps={[
             {
               title: "Pick a size and style",
-              body: "Tell us what's going under it and where it sits. Not sure on size? We'll walk you through it.",
+              body: "Tell us what's going under it and where it sits. We look at the spot too — slope, drainage, and how a truck gets in.",
             },
             {
-              title: "We price it",
-              body: "You get a firm number with roof style, gauge, doors, and colors spelled out, plus rent-to-own and financing options.",
+              title: "We price the whole job",
+              body: "A firm number with roof style, gauge, doors, and colors spelled out, plus any dirt work or concrete the site needs and your financing options.",
             },
             {
-              title: "We deliver and install",
-              body: "A factory crew sets it on your level ground or slab, usually two to six weeks after you order.",
+              title: "We prep, set, and finish it",
+              body: "We grade the pad and pour the base, the building goes up two to six weeks after you order, and we come back inside for insulation, wiring, and drywall if that's in the scope.",
             },
           ]}
         />
       </Section>
 
-      <Section>
+      <Section id="sitework">
+        <SectionHeading
+          title="Site work & finishing"
+          as="h2"
+          kicker="Most of the ground around here slopes, and a bare steel shell is a cold place to work. We handle both ends of that — before the building lands and after it's standing."
+        />
+        <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {siteWork.map((item) => (
+            <li key={item.no} className="border border-ink bg-paper p-5">
+              <span className="font-display text-sm font-bold text-press">
+                No.&nbsp;{item.no}
+              </span>
+              <h3 className="mt-1 text-xl font-semibold uppercase tracking-[0.01em]">
+                <Link href={item.href} className="hover:text-press">
+                  {item.name}
+                </Link>
+              </h3>
+              <p className="mt-2 text-ink-soft">{item.blurb}</p>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-7 flex flex-wrap gap-4">
+          <Link href="/site-prep-groundwork-sullivan-mo" className="btn">
+            See how site prep works
+          </Link>
+          <a href="#quote" className="btn btn-ghost">
+            Get the site quoted
+          </a>
+        </div>
+      </Section>
+
+      <Rule />
+
+      <Section band>
         <SectionHeading
           title="Why steel over a pole barn"
           as="h2"
@@ -173,7 +209,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section band>
+      <Section>
         <SectionHeading title="What stands behind it" as="h2" />
         <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {warranties.map((w) => (
@@ -192,7 +228,7 @@ export default function HomePage() {
         </p>
       </Section>
 
-      <Section>
+      <Section band>
         <div className="grid gap-8 md:grid-cols-2 md:items-center">
           <div>
             <SectionHeading title="Talk to a builder" as="h2" />
