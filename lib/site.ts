@@ -14,6 +14,8 @@ export const site = {
   addressLine: "Sullivan, MO",
   facebook: "https://www.facebook.com/ls4e1",
   siteUrl: "https://www.sullivansteelbuildings.com",
+  // American Steel's 3D configurator, keyed to our dealer number.
+  builderUrl: "https://build.americansteelinc.com/dealer/?dealer=SV005728",
 } as const;
 
 export const serviceArea = [

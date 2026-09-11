@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { nav, site, siteWorkNav } from "@/lib/site";
-import { Rule } from "@/components/ui";
+import { BuilderLink, Rule } from "@/components/ui";
 
 export function SiteHeader() {
   return (
@@ -79,6 +79,9 @@ export function SiteHeader() {
             <a href="#quote" className="btn btn-sm mt-4 w-full">
               Request a quote
             </a>
+            <BuilderLink className="btn btn-ghost btn-sm mt-3 w-full">
+              Design yours in 3D
+            </BuilderLink>
           </div>
         </details>
       </div>

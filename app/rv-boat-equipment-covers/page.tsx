@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
+  BuilderLink,
   CtaBand,
   FaqList,
   Frame,
@@ -37,6 +38,7 @@ export default function RvCoversPage() {
           <a href="#quote" className="btn">
             Request a quote
           </a>
+          <BuilderLink />
           <a href={site.phoneHref} className="btn btn-ghost">
             Call {site.phone}
           </a>

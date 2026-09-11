@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { QuoteForm } from "@/components/quote-form";
 import { CookieChoicesButton } from "@/components/cookie-choices-button";
+import { BuilderLink } from "@/components/ui";
 import { nav, serviceArea, site, siteWorkNav } from "@/lib/site";
 
 export function SiteFooter() {
@@ -24,6 +25,13 @@ export function SiteFooter() {
               <li>Typically installed 2 to 6 weeks out</li>
               <li>Delivered across Franklin, Washington &amp; Crawford County</li>
             </ul>
+            <p className="mt-6 text-paper/80">
+              Rather draw it yourself? Lay out sizes, doors, and colors in the{" "}
+              <BuilderLink className="font-display font-semibold uppercase tracking-wide text-paper underline decoration-1 underline-offset-4 hover:decoration-2">
+                American Steel 3D builder
+              </BuilderLink>{" "}
+              and send us what you build.
+            </p>
           </div>
           <div className="border border-paper/25 bg-paper p-6 text-ink shadow-[7px_7px_0_rgba(0,0,0,0.35)]">
             <QuoteForm variant="full" source="footer" />

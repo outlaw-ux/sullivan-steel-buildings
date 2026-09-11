@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { OrderCard } from "@/components/order-card";
 import {
+  BuilderLink,
   CtaBand,
   FactList,
   Frame,
@@ -47,6 +48,7 @@ export default function HomePage() {
             <a href="#quote" className="btn">
               Request a quote
             </a>
+            <BuilderLink>Design yours in 3D</BuilderLink>
             <a href="#pricelist" className="btn btn-ghost">
               See the price list
             </a>
@@ -134,7 +136,7 @@ export default function HomePage() {
           steps={[
             {
               title: "Pick a size and style",
-              body: "Tell us what's going under it and where it sits. We look at the spot too — slope, drainage, and how a truck gets in.",
+              body: "Tell us what's going under it and where it sits, or lay it out yourself in the 3D builder. We look at the spot too — slope, drainage, and how a truck gets in.",
             },
             {
               title: "We price the whole job",

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
+  BuilderLink,
   CtaBand,
   FactList,
   FaqList,
@@ -39,6 +40,7 @@ export default function CarportsGaragesPage() {
           <a href="#quote" className="btn">
             Request a quote
           </a>
+          <BuilderLink />
           <a href={site.phoneHref} className="btn btn-ghost">
             Call {site.phone}
           </a>
