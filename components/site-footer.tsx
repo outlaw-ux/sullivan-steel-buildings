@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { QuoteForm } from "@/components/quote-form";
 import { CookieChoicesButton } from "@/components/cookie-choices-button";
-import { nav, serviceArea, site } from "@/lib/site";
+import { BuilderLink } from "@/components/ui";
+import { nav, serviceArea, site, siteWorkNav } from "@/lib/site";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -24,6 +25,13 @@ export function SiteFooter() {
               <li>Typically installed 2 to 6 weeks out</li>
               <li>Delivered across Franklin, Washington &amp; Crawford County</li>
             </ul>
+            <p className="mt-6 text-paper/80">
+              Rather draw it yourself? Lay out sizes, doors, and colors in the{" "}
+              <BuilderLink className="font-display font-semibold uppercase tracking-wide text-paper underline decoration-1 underline-offset-4 hover:decoration-2">
+                American Steel 3D builder
+              </BuilderLink>{" "}
+              and send us what you build.
+            </p>
           </div>
           <div className="border border-paper/25 bg-paper p-6 text-ink shadow-[7px_7px_0_rgba(0,0,0,0.35)]">
             <QuoteForm variant="full" source="footer" />
@@ -31,7 +39,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="wrap grid gap-10 py-12 md:grid-cols-3">
+      <div className="wrap grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <h3 className="font-display text-lg font-semibold uppercase tracking-wide">
             Contact
@@ -75,6 +83,21 @@ export function SiteFooter() {
           </h3>
           <ul className="mt-2 grid gap-1.5">
             {nav.map((item) => (
+              <li key={item.href}>
+                <Link className="link-action" href={item.href}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="font-display text-lg font-semibold uppercase tracking-wide">
+            Site work &amp; finishing
+          </h3>
+          <ul className="mt-2 grid gap-1.5">
+            {siteWorkNav.map((item) => (
               <li key={item.href}>
                 <Link className="link-action" href={item.href}>
                   {item.label}

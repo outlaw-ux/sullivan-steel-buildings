@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { StickyQuoteBar } from "@/components/sticky-quote-bar";
 import { AnalyticsConsent } from "@/components/analytics-consent";
+import { siteWork } from "@/lib/services";
 import { serviceArea, site } from "@/lib/site";
 
 const saira = Saira_Condensed({
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Sullivan Steel Buildings & Carports",
   },
   description:
-    "Carports, metal garages, barns, and RV covers delivered and installed across Sullivan, Franklin County, and Washington County, MO. Authorized American Steel dealer. Request a free quote.",
+    "Carports, metal garages, barns, and RV covers delivered and installed across Sullivan, Franklin County, and Washington County, MO — plus the site prep, concrete, and interior finishing that goes with them. Authorized American Steel dealer. Request a free quote.",
   keywords: [
     "steel buildings Sullivan MO",
     "metal carports Franklin County",
@@ -36,6 +37,12 @@ export const metadata: Metadata = {
     "steel barns Washington County MO",
     "RV covers Sullivan MO",
     "American Steel dealer Missouri",
+    "site prep Sullivan MO",
+    "concrete pads and piers Franklin County MO",
+    "excavation and grading Sullivan Missouri",
+    "retaining walls Washington County MO",
+    "metal building insulation and drywall",
+    "camping cabin build-out Missouri",
   ],
   alternates: { canonical: "/" },
   openGraph: {
@@ -45,7 +52,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: "Sullivan Steel Buildings & Carports",
     description:
-      "Metal carports, garages, barns, and RV covers built for Missouri weather. Delivered and installed around Sullivan, MO.",
+      "Metal carports, garages, barns, and RV covers built for Missouri weather, with site prep, concrete, and interior finishing by the same crew. Around Sullivan, MO.",
   },
 };
 
@@ -55,7 +62,7 @@ const jsonLd = {
   name: site.name,
   legalName: site.legalEntity,
   description:
-    "Dealer for American Steel Carports, Inc. selling and installing metal carports, garages, barns, and RV covers around Sullivan, Missouri.",
+    "Dealer for American Steel Carports, Inc. selling and installing metal carports, garages, barns, and RV covers around Sullivan, Missouri, with site prep, excavation, retaining walls, concrete pads and piers, and interior finishing.",
   telephone: site.phone,
   email: site.email,
   url: site.siteUrl,
@@ -67,6 +74,19 @@ const jsonLd = {
     addressCountry: "US",
   },
   areaServed: serviceArea.map((name) => ({ "@type": "Place", name })),
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Site work & finishing",
+    itemListElement: siteWork.map((item) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: item.name,
+        description: item.blurb,
+        url: new URL(item.href, site.siteUrl).toString(),
+      },
+    })),
+  },
   sameAs: [site.facebook],
 };
 

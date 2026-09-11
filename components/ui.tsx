@@ -1,8 +1,42 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { site } from "@/lib/site";
 
 export function Rule() {
   return <div className="rule-double" role="presentation" />;
+}
+
+/* Page-level structured data. See lib/seo.ts for the record builders. */
+export function JsonLd({ data }: { data: object }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+/*
+ * American Steel's 3D configurator, keyed to our dealer number. It opens in a
+ * new tab so a half-built configuration isn't lost by hitting back.
+ */
+export function BuilderLink({
+  children = "Design yours in 3D",
+  className = "btn btn-ghost",
+}: {
+  children?: ReactNode;
+  className?: string;
+}) {
+  return (
+    <a
+      href={site.builderUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className}
+    >
+      {children}
+    </a>
+  );
 }
 
 export function Section({
@@ -230,9 +264,12 @@ export function CtaBand({
           </h2>
           <p className="measure mt-2 text-ink-soft">{body}</p>
         </div>
-        <a href="#quote" className="btn justify-self-start md:justify-self-end">
-          Request a quote
-        </a>
+        <div className="flex flex-wrap gap-4 justify-self-start md:justify-self-end">
+          <a href="#quote" className="btn">
+            Request a quote
+          </a>
+          <BuilderLink />
+        </div>
       </div>
     </Section>
   );

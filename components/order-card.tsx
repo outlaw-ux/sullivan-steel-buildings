@@ -1,4 +1,5 @@
 import { QuoteForm } from "@/components/quote-form";
+import { BuilderLink } from "@/components/ui";
 
 export function OrderCard() {
   return (
@@ -15,6 +16,13 @@ export function OrderCard() {
             Four boxes and we&apos;ll call you back with sizes and pricing.
           </p>
           <QuoteForm variant="card" source="hero-order-card" />
+          <p className="mt-4 border-t border-rule pt-3 text-sm text-ink-soft">
+            Like to see it first?{" "}
+            <BuilderLink className="link-action">
+              Design it in our 3D builder
+            </BuilderLink>{" "}
+            and send us the configuration.
+          </p>
         </div>
       </div>
     </aside>
